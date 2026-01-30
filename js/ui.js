@@ -22,7 +22,7 @@ const ui = {
     const iconeAspas = document.createElement("img");
     iconeAspas.src = "./assets/imagens/aspas-azuis.png";
     iconeAspas.alt = "aspas azuis";
-    iconeAspas.classList.add("aspas-azuis");
+    iconeAspas.classList.add("icone-aspas");
 
     const pensamentoConteudo = document.createElement("div");
     pensamentoConteudo.textContent = pensamento.conteudo;
