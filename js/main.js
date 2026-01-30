@@ -1,12 +1,19 @@
-import ui from "./ui.js"
-import api from "./api.js"
+import ui from "./ui.js";
+import api from "./api.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  ui.renderizarPensamentos()
+  ui.renderizarPensamentos();
 
-  const formularioPensamento = document.getElementById("pensamento-form")
-  formularioPensamento.addEventListener("submit", manipularSubmissaoFormulario)
-})
+  const formularioPensamento = document.getElementById("pensamento-form");
+  formularioPensamento.addEventListener("submit", manipularSubmissaoFormulario);
+
+  const formulario = document.getElementById("pensamento-form");
+  const botaoCancelar = document.getElementById("botao-cancelar");
+  botaoCancelar.addEventListener("click", (eventt) => {
+    event.preventDefault();
+    formulario.reset();
+  });
+});
 
 async function manipularSubmissaoFormulario(event) {
   event.preventDefault();
@@ -16,11 +23,10 @@ async function manipularSubmissaoFormulario(event) {
   const autoria = document.getElementById("pensamento-autoria").value;
 
   try {
-    await api.salvarPensamento({ conteudo, autoria});
-    ui.renderizarPensamentos()
-    
+    await api.salvarPensamento({ conteudo, autoria });
+    ui.renderizarPensamentos();
   } catch (error) {
-    console.log(error)
-    alert("Erro ao salvar pensamento!")
+    console.log(error);
+    alert("Erro ao salvar pensamento!");
   }
 }
