@@ -2,15 +2,17 @@ import api from "./api.js";
 
 /**
  * Camada de UI responsável por:
- * - Renderizar pensamentos na tela
- * - Preencher formulário para edição
- * - Lidar com ações de editar e excluir no DOM
+ * - Renderizar pensamentos no DOM
+ * - Preencher o formulário para edição
+ * - Controlar ações de editar e excluir
  */
 const ui = {
+
   /**
-   * Preenche o formulário com os dados de um pensamento
-   * para permitir edição.
-   * @param {number} pensamentoId
+   * Preenche o formulário com os dados de um pensamento existente,
+   * permitindo que o usuário edite suas informações.
+   *
+   * @param {number} pensamentoId - ID do pensamento a ser editado
    */
   async preencherFormulario(pensamentoId) {
     const pensamento = await api.buscarPensamentosPorId(pensamentoId);
@@ -21,21 +23,22 @@ const ui = {
   },
 
   /**
-   * Renderiza todos os pensamentos na lista
+   * Renderiza todos os pensamentos no mural.
+   * Caso não existam pensamentos, exibe o estado vazio.
    */
   async renderizarPensamentos() {
     try {
       const container = document.getElementById("lista-pensamentos-container");
       const listaPensamentos = document.getElementById("lista-pensamentos");
-
       let estadoVazio = document.getElementById("estado-vazio");
 
+      // Busca os pensamentos no backend
       const pensamentos = await api.buscarPensamentos();
 
-      // Limpa a lista antes de renderizar
+      // Limpa a lista antes de renderizar novamente
       listaPensamentos.innerHTML = "";
 
-      // Caso não existam pensamentos, exibe estado vazio
+      // Caso não existam pensamentos, exibe o estado vazio
       if (pensamentos.length === 0) {
         if (!estadoVazio) {
           estadoVazio = criarEstadoVazio();
@@ -44,13 +47,14 @@ const ui = {
         return;
       }
 
-      // Remove estado vazio se existir
+      // Remove o estado vazio se houver pensamentos
       if (estadoVazio) {
         estadoVazio.remove();
       }
 
-      // Renderiza pensamentos normalmente
+      // Renderiza cada pensamento individualmente
       pensamentos.forEach(ui.adicionarPensamentoNaLista);
+
     } catch (error) {
       console.error(error);
       alert("Erro ao renderizar pensamentos");
@@ -58,13 +62,14 @@ const ui = {
   },
 
   /**
-   * Cria e adiciona um item de pensamento na lista
-   * @param {Object} pensamento
+   * Cria e adiciona um item de pensamento na lista do mural.
+   *
+   * @param {Object} pensamento - Objeto contendo os dados do pensamento
    */
   adicionarPensamentoNaLista(pensamento) {
     const listaPensamentos = document.getElementById("lista-pensamentos");
 
-    // Item principal
+    // Elemento principal do item
     const li = document.createElement("li");
     li.dataset.id = pensamento.id;
     li.classList.add("li-pensamento");
@@ -80,12 +85,12 @@ const ui = {
     pensamentoConteudo.textContent = pensamento.conteudo;
     pensamentoConteudo.classList.add("pensamento-conteudo");
 
-    // Autoria do pensamento
+    // Autoria ou fonte do pensamento
     const pensamentoAutoria = document.createElement("div");
     pensamentoAutoria.textContent = pensamento.autoria;
     pensamentoAutoria.classList.add("pensamento-autoria");
 
-    // Botão de editar
+    // Botão de edição
     const botaoEditar = document.createElement("button");
     botaoEditar.classList.add("botao-editar");
     botaoEditar.onclick = () => ui.preencherFormulario(pensamento.id);
@@ -95,12 +100,12 @@ const ui = {
     iconeEditar.alt = "Editar pensamento";
     botaoEditar.appendChild(iconeEditar);
 
-    // Botão de excluir
+    // Botão de exclusão
     const botaoExcluir = document.createElement("button");
     botaoExcluir.classList.add("botao-excluir");
     botaoExcluir.onclick = async () => {
       const confirmar = confirm(
-        "Tem certeza que deseja excluir este pensamento?",
+        "Tem certeza que deseja excluir este pensamento?"
       );
       if (!confirmar) return;
 
@@ -118,7 +123,7 @@ const ui = {
     iconeExcluir.alt = "Excluir pensamento";
     botaoExcluir.appendChild(iconeExcluir);
 
-    // Container de ações
+    // Container de ações (editar / excluir)
     const icones = document.createElement("div");
     icones.classList.add("icones");
     icones.appendChild(botaoEditar);
@@ -134,6 +139,12 @@ const ui = {
   },
 };
 
+/**
+ * Cria o elemento de estado vazio exibido
+ * quando não há pensamentos cadastrados.
+ *
+ * @returns {HTMLElement}
+ */
 function criarEstadoVazio() {
   const estadoVazio = document.createElement("div");
   estadoVazio.id = "estado-vazio";

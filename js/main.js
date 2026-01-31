@@ -29,8 +29,7 @@ async function manipularSubmissaoFormulario(event) {
       await api.salvarPensamento({ conteudo, autoria });
     }
     ui.renderizarPensamentos();
-  } 
-  catch (error) {
+  } catch (error) {
     console.log(error);
     alert("Erro ao salvar pensamento!");
   }
