@@ -1,60 +1,127 @@
-![Thumbnail](./thumb.png)
 
-# Memoteca
+# 🧠 Memoteca
 
-Memoteca é um aplicativo organizador de pensamentos e frases que permite cadastrar, listar, editar e deletar pensamentos, incluindo informações como conteúdo e autoria.
+**Memoteca** é uma aplicação web para organizar pensamentos, trechos de músicas, citações de livros e ideias pessoais em um único lugar.
+O projeto implementa um CRUD completo (Create, Read, Update, Delete) consumindo uma API REST simulada com **JSON Server**.
 
-## 🔨 Funcionalidades do projeto
+---
 
-`Cadastro de pensamentos`: Permite adicionar novos pensamentos à lista, inserindo informações como conteúdo e autoria.
+## ✨ Funcionalidades
 
-`Listagem de pensamentos`: Exibe os pensamentos cadastrados, permitindo visualizar o texto e a autoria.
+* ➕ Criar novos pensamentos
+* 📄 Listar pensamentos cadastrados
+* ✏️ Editar pensamentos existentes
+* 🗑️ Excluir pensamentos
+* 🧠 Estado vazio (mensagem exibida quando não há pensamentos cadastrados)
+* 🔄 Atualização automática da lista após cada operação
 
-`Edição de pensamentos`: Permite editar pensamentos existentes, atualizando as informações conforme necessário.
+---
 
-`Exclusão de pensamentos`: Permite remover pensamentos da lista.
+## 🛠️ Tecnologias Utilizadas
 
-## ✔️ Técnicas e tecnologias utilizadas
+* **JavaScript (ES6+)**
+* **HTML5**
+* **CSS3**
+* **Fetch API**
+* **JSON Server** (API fake)
+* **Node.js**
 
-`JavaScript`: Linguagem de programação utilizada para desenvolver a lógica do aplicativo.
+---
 
-`Fetch API`: Utilizada para realizar requisições HTTP para comunicação com o servidor.
+## 🧩 Arquitetura do Projeto
 
-`Axios`: Biblioteca usada para facilitar e simplificar as requisições HTTP.
+O projeto segue uma separação clara de responsabilidades:
 
-`Node.js`: Plataforma utilizada para executar o ambiente de desenvolvimento.
+```text
+📁 js
+ ├── api.js    → Comunicação com a API (CRUD)
+ ├── ui.js     → Manipulação do DOM e interações visuais
+ └── main.js   → Controle de eventos e fluxo da aplicação
+```
 
-`JSON Server`: Utilizado para simular um backend e facilitar o desenvolvimento e teste das operações CRUD.
+* `api.js`: responsável pelas requisições HTTP (GET, POST, PUT, DELETE)
+* `ui.js`: responsável por renderizar os pensamentos e controlar ações de editar/excluir
+* `main.js`: responsável por inicializar a aplicação e controlar o formulário
 
-`CSS`: Utilizado para estilização da interface do aplicativo.
+---
 
+## ▶️ Como Executar o Projeto
 
-## 📁 Link do Figma
+### 🔧 Pré-requisitos
 
-Você pode [acessar o figma do projeto aqui](https://www.figma.com/design/Sz1gmmemxqcB3amInL4Ndp/Rebrand-Memoteca-%7C-Curso-CRUD?node-id=148-26&t=FpdmfbiM1i1s6REQ-0).
-
-## 🛠️ Abrir e rodar o projeto
-
-Para executar a API fake, você vai precisar do NodeJS; a versão utilizada foi a 20.12.2.
-
-Instale o JSON Server globalmente (se ainda não estiver instalado):
+* Node.js (versão utilizada: **20.x**)
+* JSON Server instalado globalmente
 
 ```bash
 npm install -g json-server
 ```
 
-Para executar, abra um novo terminal e, dentro da pasta backend, execute:
+---
+
+### 🚀 Executando a API (Backend Fake)
+
+1. Acesse a pasta do backend
+2. Inicie o JSON Server:
 
 ```bash
-npm start
+json-server --watch db.json --port 3000
 ```
 
-Acesse o backend localmente em seu navegador:
+A API estará disponível em:
 
-http://localhost:3000
+```
+http://localhost:3000/pensamentos
+```
 
-Para executar o frontend, abra o projeto no Visual Studio Code. Com a extensão Live Server instalada, clique com o botão direito no arquivo index.html e selecione "Open with Live Server" no menu de contexto.
+---
 
-Acesse o frontend localmente em seu navegador:
+### 💻 Executando o Frontend
 
-http://localhost:5500
+1. Abra o projeto no **Visual Studio Code**
+2. Utilize a extensão **Live Server**
+3. Clique com o botão direito no arquivo `index.html`
+4. Selecione **Open with Live Server**
+
+---
+
+## 📌 Exemplo de Requisições
+
+* **GET** `/pensamentos`
+* **GET** `/pensamentos/:id`
+* **POST** `/pensamentos`
+* **PUT** `/pensamentos/:id`
+* **DELETE** `/pensamentos/:id`
+
+---
+
+## 🎯 Objetivo do Projeto
+
+Este projeto foi desenvolvido com foco em:
+
+* Prática de JavaScript moderno
+* Consumo de APIs REST
+* Organização de código frontend
+* Manipulação de DOM
+* Boas práticas de separação de responsabilidades
+* Desenvolvimento de um CRUD completo para portfólio
+
+---
+
+## 👨‍💻 Autor
+
+Desenvolvido por **Flavio da Costa Marques** junto a **Alura**.
+
+* 📧 Email: [flavionegocios2004@gmail.com](mailto:flavionegocios2004@gmail.com)
+* 🔗 GitHub: [FlavioProgramador](https://github.com/FlavioProgramador)
+
+---
+
+## 📄 Licença
+
+Projeto com fins educacionais.
+Sem fins comerciais.
+
+---
+
+### ✅ Avaliação honesta
+
