@@ -46,13 +46,8 @@
       "autoria": "Mestre Yoda"
     },
     {
-      "id": "2d6e",
-      "conteudo": "Não faça drama, faça café! :)",
-      "autoria": "Dev"
-    },
-    {
       "id": "3f1a",
-      "conteudo": "Conserta minha impressora?",
+      "conteudo": "flamengo",
       "autoria": "Grupo da família"
     },
     {
@@ -64,16 +59,6 @@
       "id": "4d2e",
       "conteudo": "Se eu for aí e achar, eu esfrego na sua cara!",
       "autoria": "Mãe"
-    },
-    {
-      "id": "9d84",
-      "conteudo": "          só sei que nada sei",
-      "autoria": "Flavio"
-    },
-    {
-      "id": "cd62",
-      "conteudo": "Já abriu chamado?",
-      "autoria": "Flavio"
     }
   ]
 }
