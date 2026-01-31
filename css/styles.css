@@ -282,3 +282,22 @@ span {
   background: #041832;
   margin: 96px 0 48px 0;
 }
+
+.estado-vazio {
+  text-align: center;
+  margin: 40px auto;
+}
+
+.estado-vazio p  {
+  font-family: "Poppins", sans-serif;
+  color: var(--Azul-Dark);
+  font-weight: 400;
+  font-size: 26px;
+}
+
+.estado-vazio img {
+  margin-top: 40px;
+  max-width: 120px;
+  max-height: 120px;
+  opacity: 0.8;
+}
